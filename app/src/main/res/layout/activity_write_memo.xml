@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="kr.co.diordna.speedmemo.MemoMainActivity">
+
+    <TextView
+        android:id="@+id/tv_update_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="2016-01-01"/>
+
+    <ImageView
+        android:id="@+id/iv_back_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@color/colorAccent"/>
+
+    <ImageView
+        android:id="@+id/iv_remove_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"/>
+
+    <ImageView
+        android:id="@+id/iv_save_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorAccent"/>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/iv_remove_btn"
+        android:layout_below="@id/iv_back_btn"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="메모를 입력해주세요."
+        android:inputType="textMultiLine"/>
+
+
+</RelativeLayout>
