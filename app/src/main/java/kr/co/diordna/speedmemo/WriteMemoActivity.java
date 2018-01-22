@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.joda.time.DateTime;
 
 import kr.co.diordna.speedmemo.database.DBProvider;
 import kr.co.diordna.speedmemo.model.Memo;
+import kr.co.diordna.speedmemo.utils.AppConstant;
 
 /**
  * Created by ryans on 2018-01-21.
@@ -18,6 +22,7 @@ import kr.co.diordna.speedmemo.model.Memo;
 
 public class WriteMemoActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private Memo mMemo = null;
     private DBProvider mDBProvider;
 
     private ImageView iv_back_btn;
@@ -25,7 +30,6 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     private ImageView iv_save_btn;
     private EditText et_content;
     private TextView tv_update_time;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,19 +55,19 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     private void initData() {
         mDBProvider = new DBProvider(this, DBProvider.DB_VERSION);
 
-        Memo memo = null;
-
         try {
             Intent i = getIntent();
-            memo = (Memo) i.getSerializableExtra("memo");
+            mMemo = (Memo) i.getSerializableExtra("memo");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if (memo != null) {
-            et_content.setText(memo.getContent());
+        if (mMemo != null) {
+            et_content.setText(mMemo.getContent());
             et_content.setCursorVisible(false);
-            tv_update_time.setText(memo.getUpdateAt().toString("yyyy-MM-dd"));
+            tv_update_time.setText(mMemo.getUpdateAt().toString(AppConstant.DEFAULT_DATE_FORMAT));
+        } else {
+            tv_update_time.setText(new DateTime().toString(AppConstant.DEFAULT_DATE_FORMAT));
         }
 
     }
@@ -78,7 +82,7 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
 
                 break;
             case R.id.iv_remove_btn:
-                showMemo();
+                deleteMemo();
                 break;
             case R.id.iv_save_btn:
                 saveMemo();
@@ -87,10 +91,25 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void saveMemo() {
-        mDBProvider.insertMemo(et_content.getText().toString());
+        if (mMemo != null) {
+            Memo updateMemo = new Memo();
+            updateMemo.setIndex(mMemo.getIndex());
+            updateMemo.setContent(et_content.getText().toString());
+            mDBProvider.updateMemo(updateMemo);
+        } else {
+            mDBProvider.insertMemo(et_content.getText().toString());
+        }
+
+        finish();
     }
 
-    private void showMemo() {
-        mDBProvider.selectAllMemo();
+    private void deleteMemo() {
+        if (mMemo.getIndex() == -1) {
+            Toast.makeText(this, "삭제할 메모가 없습니다.", Toast.LENGTH_SHORT).show();
+        } else {
+            mDBProvider.deleteMemo(mMemo.getIndex());
+        }
+
+        finish();
     }
 }

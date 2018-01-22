@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class Memo implements Serializable{
 
-    private int index;
+    private int index = -1;
     private String content;
     private DateTime updateAt;
     private DateTime createAt;

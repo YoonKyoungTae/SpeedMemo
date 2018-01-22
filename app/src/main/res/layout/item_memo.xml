@@ -13,14 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="내용"
-        android:textColor="@color/c_201f1f"/>
+        android:textColor="@color/c_212121"/>
 
     <TextView
         android:id="@+id/tv_update_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="날짜"
-        android:textColor="@color/c_201f1f"/>
+        android:textColor="@color/c_212121"/>
 
     <View
         android:layout_width="match_parent"

@@ -5,51 +5,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@color/c_ffffff"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     tools:context="kr.co.diordna.speedmemo.MemoMainActivity">
 
-    <TextView
-        android:id="@+id/tv_update_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="2016-01-01"/>
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
 
-    <ImageView
-        android:id="@+id/iv_back_btn"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@color/colorAccent"/>
+        <TextView
+            android:id="@+id/tv_update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="2016-01-01"
+            android:textColor="@color/c_212121"/>
 
-    <ImageView
-        android:id="@+id/iv_remove_btn"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"/>
+        <ImageView
+            android:id="@+id/iv_back_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow"/>
 
-    <ImageView
-        android:id="@+id/iv_save_btn"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/colorAccent"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/c_212121"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/iv_remove_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/remove"/>
+
+        <ImageView
+            android:id="@+id/iv_save_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/double_circle"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/c_212121"/>
+
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/iv_remove_btn"
-        android:layout_below="@id/iv_back_btn"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_above="@id/rl_bottom"
+        android:layout_below="@id/rl_top"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="메모를 입력해주세요."
-        android:inputType="textMultiLine"/>
-
+        android:inputType="textMultiLine"
+        android:textColor="@color/c_212121"
+        android:textSize="15sp"/>
 
 </RelativeLayout>

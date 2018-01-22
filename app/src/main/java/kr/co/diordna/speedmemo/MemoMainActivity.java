@@ -5,19 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 
 import kr.co.diordna.speedmemo.adapter.MemoListAdapter;
 import kr.co.diordna.speedmemo.database.DBProvider;
 import kr.co.diordna.speedmemo.model.Memo;
 
-public class MemoMainActivity extends AppCompatActivity implements MemoListAdapter.OnItemClickListener{
+public class MemoMainActivity extends AppCompatActivity implements View.OnClickListener, MemoListAdapter.OnItemClickListener{
 
-    private ImageView iv_back_btn;
+    private ImageView iv_menu_btn;
     private ImageView iv_add_btn;
     private RecyclerView rv_memo_list;
 
     private MemoListAdapter mMemoListAdapter;
+    private DBProvider mDBProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +30,27 @@ public class MemoMainActivity extends AppCompatActivity implements MemoListAdapt
     }
 
     private void initView() {
-        iv_back_btn = findViewById(R.id.iv_back_btn);
+        iv_menu_btn = findViewById(R.id.iv_menu_btn);
         iv_add_btn = findViewById(R.id.iv_add_btn);
 
         rv_memo_list = findViewById(R.id.rv_memo_list);
         rv_memo_list.setLayoutManager(new LinearLayoutManager(this));
 
+        iv_menu_btn.setOnClickListener(this);
+        iv_add_btn.setOnClickListener(this);
     }
 
     private void initData() {
-        DBProvider dbProvider = new DBProvider(this, DBProvider.DB_VERSION);
-        mMemoListAdapter = new MemoListAdapter(dbProvider.selectAllMemo());
+        mDBProvider = new DBProvider(this, DBProvider.DB_VERSION);
+        mMemoListAdapter = new MemoListAdapter();
         mMemoListAdapter.setOnItemClickListener(this);
         rv_memo_list.setAdapter(mMemoListAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMemoListAdapter.setList(mDBProvider.selectAllMemo());
     }
 
     @Override
@@ -48,5 +58,17 @@ public class MemoMainActivity extends AppCompatActivity implements MemoListAdapt
         Intent i = new Intent(this, WriteMemoActivity.class);
         i.putExtra("memo", memo);
         startActivity(i);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_menu_btn:
+                //
+                break;
+            case R.id.iv_add_btn:
+                startActivity(new Intent(this, WriteMemoActivity.class));
+                break;
+        }
     }
 }

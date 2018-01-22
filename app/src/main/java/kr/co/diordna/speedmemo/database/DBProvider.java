@@ -60,6 +60,26 @@ public class DBProvider extends SQLiteOpenHelper {
         db.close(); // 연결종료
     }
 
+    public void updateMemo(Memo memo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CONTENT, memo.getContent());
+        values.put(COLUMN_UPDATE_AT, new DateTime().getMillis());
+
+        // 새로운 Row 추가
+        String[] whereArgs = new String[] {String.valueOf(memo.getIndex())};
+        db.update(MEMO_TABLE, values, COLUMN_INDEX + "=?", whereArgs);
+        db.close(); // 연결종료
+    }
+
+    public void deleteMemo(int index) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] whereArgs = new String[] {String.valueOf(index)};
+        db.delete(MEMO_TABLE, COLUMN_INDEX + "=?", whereArgs);
+        db.close();
+    }
+
     public ArrayList<Memo> selectAllMemo() {
         ArrayList<Memo> memos = new ArrayList<>();
 
@@ -85,6 +105,5 @@ public class DBProvider extends SQLiteOpenHelper {
         cursor.close();
         return memos;
     }
-
 
 }

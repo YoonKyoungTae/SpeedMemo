@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import kr.co.diordna.speedmemo.R;
 import kr.co.diordna.speedmemo.model.Memo;
+import kr.co.diordna.speedmemo.utils.AppConstant;
 
 /**
  * Created by ryans on 2018-01-21.
@@ -19,8 +20,12 @@ public class MemoListAdapter extends RecyclerView.Adapter<MemoListAdapter.ViewHo
 
     private ArrayList<Memo> mList;
 
-    public MemoListAdapter(ArrayList<Memo> list) {
+    public MemoListAdapter() {
+    }
+
+    public void setList(ArrayList<Memo> list) {
         mList = list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -32,7 +37,7 @@ public class MemoListAdapter extends RecyclerView.Adapter<MemoListAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tv_content.setText(mList.get(position).getContent());
-        holder.tv_update_time.setText(mList.get(position).getUpdateAt().toString("yyyy-MM-dd"));
+        holder.tv_update_time.setText(mList.get(position).getUpdateAt().toString(AppConstant.DEFAULT_DATE_FORMAT));
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(this);
     }
