@@ -2,9 +2,11 @@ package kr.co.diordna.speedmemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,6 +19,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
     private ImageView iv_menu_btn;
     private ImageView iv_add_btn;
     private RecyclerView rv_memo_list;
+    private DrawerLayout drawer_layout;
 
     private MemoListAdapter mMemoListAdapter;
     private DBProvider mDBProvider;
@@ -35,6 +38,8 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
 
         rv_memo_list = findViewById(R.id.rv_memo_list);
         rv_memo_list.setLayoutManager(new LinearLayoutManager(this));
+
+        drawer_layout = findViewById(R.id.drawer_layout);
 
         iv_menu_btn.setOnClickListener(this);
         iv_add_btn.setOnClickListener(this);
@@ -64,7 +69,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_menu_btn:
-                //
+                drawer_layout.openDrawer(Gravity.START);
                 break;
             case R.id.iv_add_btn:
                 startActivity(new Intent(this, WriteMemoActivity.class));
