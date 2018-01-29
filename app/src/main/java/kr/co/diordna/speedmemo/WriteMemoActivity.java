@@ -1,9 +1,12 @@
 package kr.co.diordna.speedmemo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -68,6 +71,7 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
             tv_update_time.setText(mMemo.getUpdateAt().toString(AppConstant.DEFAULT_DATE_FORMAT));
         } else {
             tv_update_time.setText(new DateTime().toString(AppConstant.DEFAULT_DATE_FORMAT));
+            iv_remove_btn.setVisibility(View.GONE);
         }
 
     }
@@ -79,7 +83,7 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
                 et_content.setCursorVisible(true);
                 break;
             case R.id.iv_back_btn:
-
+                finishActivity();
                 break;
             case R.id.iv_remove_btn:
                 deleteMemo();
@@ -90,7 +94,39 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    private void finishActivity() {
+        String contents = et_content.getText().toString();
+        if (TextUtils.isEmpty(contents)) {
+            finish();
+            return;
+        }
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setMessage(getString(R.string.dialog_memo_back_btn_msg));
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
     private void saveMemo() {
+        String contents = et_content.getText().toString();
+        if (TextUtils.isEmpty(contents)) {
+            Toast.makeText(this, getString(R.string.toast_require_fill_contents), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (mMemo != null) {
             Memo updateMemo = new Memo();
             updateMemo.setIndex(mMemo.getIndex());
@@ -104,12 +140,23 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void deleteMemo() {
-        if (mMemo.getIndex() == -1) {
-            Toast.makeText(this, "삭제할 메모가 없습니다.", Toast.LENGTH_SHORT).show();
-        } else {
-            mDBProvider.deleteMemo(mMemo.getIndex());
-        }
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setMessage(getString(R.string.dialog_memo_delete_msg));
+        dialog.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mDBProvider.deleteMemo(mMemo.getIndex());
+                finish();
+            }
+        });
 
-        finish();
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
