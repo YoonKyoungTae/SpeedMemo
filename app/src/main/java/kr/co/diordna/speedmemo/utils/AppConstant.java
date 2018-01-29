@@ -6,6 +6,6 @@ package kr.co.diordna.speedmemo.utils;
 
 public class AppConstant {
 
-    public static String DEFAULT_DATE_FORMAT = "yy년 MM월 dd일 HH시 mm분";
+    public static String DEFAULT_DATE_FORMAT = "yy.MM.dd. EEE. HH:mm";
 
 }
