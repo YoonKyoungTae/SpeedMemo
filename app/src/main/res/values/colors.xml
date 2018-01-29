@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="c_212121">#212121</color>
+    <color name="c_929292">#929292</color>
+    <color name="c_bdbdbd">#bdbdbd</color>
+    <color name="c_ececec">#ececec</color>
     <color name="c_ffffff">#ffffff</color>
 
 </resources>
