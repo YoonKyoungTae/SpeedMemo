@@ -2,6 +2,7 @@ package kr.co.diordna.speedmemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -74,6 +75,15 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
             case R.id.iv_add_btn:
                 startActivity(new Intent(this, WriteMemoActivity.class));
                 break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 }
