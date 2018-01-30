@@ -5,6 +5,14 @@
     <string name="delete">삭제</string>
     <string name="cancel">취소</string>
 
+    <string name="select_function_title">메모방식을 선택해주세요.</string>
+    <string name="select_function_tip">메모방식은 앱 환경설정에서 언제든 변경 가능합니다.</string>
+    <string name="select_write_title">쓰기 먼저 할래요!</string>
+    <string name="select_write_description">앱 실행시, 새 메모 작성 화면이 먼저 노출됩니다.\n빠르게 메모를 작성 해야하는 분들께 추천합니다.</string>
+    <string name="select_read_title">읽기 먼저 할래요!</string>
+    <string name="select_read_description">앱 실행시, 작성된 메모 리스트 화면이 먼저 노출됩니다.\n메모 쓰기보다 읽기를 자주하는 분들께 추천합니다.</string>
+
+
     <string name="dialog_memo_delete_msg">메모를 삭제하시겠습니까?</string>
     <string name="dialog_memo_back_btn_msg">작성중인 메모는 저장되지 않습니다.</string>
 

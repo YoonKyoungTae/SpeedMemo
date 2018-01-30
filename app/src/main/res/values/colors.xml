@@ -3,8 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="c_ff5252">#ff5252</color>
 
     <color name="c_212121">#212121</color>
+    <color name="c_424242">#424242</color>
     <color name="c_929292">#929292</color>
     <color name="c_bdbdbd">#bdbdbd</color>
     <color name="c_ececec">#ececec</color>
