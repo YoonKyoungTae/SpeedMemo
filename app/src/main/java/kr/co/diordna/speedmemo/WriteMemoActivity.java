@@ -97,6 +97,7 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     private void finishActivity() {
         String contents = et_content.getText().toString();
         if (TextUtils.isEmpty(contents)) {
+            // TODO 앱 시작을 통해서 들어왔을때는 LIST 메뉴로 startActivty()를 추가한다.
             finish();
             return;
         }
