@@ -68,14 +68,14 @@ public class DBProvider extends SQLiteOpenHelper {
         values.put(COLUMN_UPDATE_AT, new DateTime().getMillis());
 
         // 새로운 Row 추가
-        String[] whereArgs = new String[] {String.valueOf(memo.getIndex())};
+        String[] whereArgs = new String[]{String.valueOf(memo.getIndex())};
         db.update(MEMO_TABLE, values, COLUMN_INDEX + "=?", whereArgs);
         db.close(); // 연결종료
     }
 
     public void deleteMemo(int index) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] whereArgs = new String[] {String.valueOf(index)};
+        String[] whereArgs = new String[]{String.valueOf(index)};
         db.delete(MEMO_TABLE, COLUMN_INDEX + "=?", whereArgs);
         db.close();
     }
@@ -90,16 +90,14 @@ public class DBProvider extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            while (cursor.moveToNext()) {
-                Memo data = new Memo();
-                data.setIndex(cursor.getInt(0));
-                data.setContent(cursor.getString(1));
-                data.setUpdateAt(cursor.getString(2));
-                data.setCreateAt(cursor.getString(3));
+        while (cursor.moveToNext()) {
+            Memo data = new Memo();
+            data.setIndex(cursor.getInt(0));
+            data.setContent(cursor.getString(1));
+            data.setUpdateAt(cursor.getString(2));
+            data.setCreateAt(cursor.getString(3));
 
-                memos.add(data);
-            }
+            memos.add(data);
         }
 
         cursor.close();
