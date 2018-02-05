@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +35,10 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     private EditText et_content;
     private TextView tv_update_time;
 
+    public static String IS_FIRST_ACTIVITY_KEY = "IS_FIRST_ACTIVITY_KEY";
+    public static String MEMO_ITEM_KEY = "MEMO_ITEM_KEY";
+    private boolean mIsFirstActivity = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +65,14 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
 
         try {
             Intent i = getIntent();
-            mMemo = (Memo) i.getSerializableExtra("memo");
+            mMemo = (Memo) i.getSerializableExtra(MEMO_ITEM_KEY);
+            mIsFirstActivity = i.getBooleanExtra(IS_FIRST_ACTIVITY_KEY, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         if (mMemo != null) {
             et_content.setText(mMemo.getContent());
-            et_content.setCursorVisible(false);
             tv_update_time.setText(mMemo.getUpdateAt().toString(AppConstant.DEFAULT_DATE_FORMAT));
         } else {
             tv_update_time.setText(new DateTime().toString(AppConstant.DEFAULT_DATE_FORMAT));
@@ -79,11 +84,8 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.et_content:
-                et_content.setCursorVisible(true);
-                break;
             case R.id.iv_back_btn:
-                finishActivity();
+                backToActivity();
                 break;
             case R.id.iv_remove_btn:
                 deleteMemo();
@@ -94,10 +96,9 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void finishActivity() {
+    private void backToActivity() {
         String contents = et_content.getText().toString();
         if (TextUtils.isEmpty(contents)) {
-            // TODO 앱 시작을 통해서 들어왔을때는 LIST 메뉴로 startActivty()를 추가한다.
             finish();
             return;
         }
@@ -159,5 +160,16 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
         });
 
         dialog.show();
+    }
+
+    @Override
+    public void finish() {
+        if (mIsFirstActivity) {
+            Log.d("TEST", "시작으로 들어온 화면");
+            startActivity(new Intent(this, MemoMainActivity.class));
+        }
+
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

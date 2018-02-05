@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import kr.co.diordna.speedmemo.adapter.MemoListAdapter;
 import kr.co.diordna.speedmemo.database.DBProvider;
@@ -19,6 +22,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
 
     private ImageView iv_menu_btn;
     private ImageView iv_add_btn;
+    private TextView tv_empty_msg;
     private RecyclerView rv_memo_list;
     private DrawerLayout drawer_layout;
 
@@ -36,6 +40,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
     private void initView() {
         iv_menu_btn = findViewById(R.id.iv_menu_btn);
         iv_add_btn = findViewById(R.id.iv_add_btn);
+        tv_empty_msg = findViewById(R.id.tv_empty_msg);
 
         rv_memo_list = findViewById(R.id.rv_memo_list);
         rv_memo_list.setLayoutManager(new LinearLayoutManager(this));
@@ -56,14 +61,29 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
-        mMemoListAdapter.setList(mDBProvider.selectAllMemo());
+
+        if (mDBProvider != null) {
+            ArrayList<Memo> memos = mDBProvider.selectAllMemo();
+            if (memos.size() == 0) {
+                tv_empty_msg.setVisibility(View.VISIBLE);
+                rv_memo_list.setVisibility(View.GONE);
+            } else {
+                tv_empty_msg.setVisibility(View.GONE);
+                rv_memo_list.setVisibility(View.VISIBLE);
+                mMemoListAdapter.setList(memos);
+            }
+        } else {
+            tv_empty_msg.setVisibility(View.VISIBLE);
+            rv_memo_list.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onClickItem(Memo memo) {
         Intent i = new Intent(this, WriteMemoActivity.class);
-        i.putExtra("memo", memo);
+        i.putExtra(WriteMemoActivity.MEMO_ITEM_KEY, memo);
         startActivity(i);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override
@@ -74,6 +94,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.iv_add_btn:
                 startActivity(new Intent(this, WriteMemoActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
     }
