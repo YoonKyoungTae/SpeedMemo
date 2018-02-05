@@ -50,19 +50,25 @@
             android:layout_height="match_parent"
             android:layout_below="@id/rl_top"/>
 
+        <TextView
+            android:id="@+id/tv_empty_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rl_top"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="저장된 메모가 없습니다.\n우측 상단의 '+' 버튼을 눌러\n새로운 메모를 추가해보세요."
+            android:textColor="@color/c_929292"/>
+
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="240dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFF">
+        android:layout_gravity="start">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/c_212121"
-            android:text="TEST MSG"/>
+        <include
+            layout="@layout/drawer_header"/>
 
     </LinearLayout>
 
