@@ -29,7 +29,9 @@ public class SelectFunctionActivity extends AppCompatActivity implements View.On
         switch (view.getId()) {
             case R.id.li_write_btn:
                 MyPref.getInstance().putBoolean(AppConstant.APP_MODE, true);
-                startActivity(new Intent(this, WriteMemoActivity.class));
+                Intent i = new Intent(this, WriteMemoActivity.class);
+                i.putExtra(WriteMemoActivity.IS_FIRST_ACTIVITY_KEY, true);
+                startActivity(i);
                 break;
             case R.id.li_read_btn:
                 MyPref.getInstance().putBoolean(AppConstant.APP_MODE, false);

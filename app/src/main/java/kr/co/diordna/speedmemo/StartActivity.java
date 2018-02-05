@@ -25,7 +25,9 @@ public class StartActivity extends AppCompatActivity {
         } else {
 
             if (appMode) {
-                startActivity(new Intent(this, WriteMemoActivity.class));
+                Intent i = new Intent(this, WriteMemoActivity.class);
+                i.putExtra(WriteMemoActivity.IS_FIRST_ACTIVITY_KEY, true);
+                startActivity(i);
             } else {
                 startActivity(new Intent(this, MemoMainActivity.class));
             }
