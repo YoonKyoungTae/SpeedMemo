@@ -148,6 +148,7 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mDBProvider.deleteMemo(mMemo.getIndex());
+                Toast.makeText(WriteMemoActivity.this, "메모가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

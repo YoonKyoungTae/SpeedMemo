@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import kr.co.diordna.speedmemo.R;
 import kr.co.diordna.speedmemo.model.Memo;
@@ -16,7 +18,7 @@ import kr.co.diordna.speedmemo.utils.AppConstant;
  * Created by ryans on 2018-01-21.
  */
 
-public class MemoListAdapter extends RecyclerView.Adapter<MemoListAdapter.ViewHolder> implements View.OnClickListener{
+public class MemoListAdapter extends RecyclerView.Adapter<MemoListAdapter.ViewHolder> implements View.OnClickListener {
 
     private ArrayList<Memo> mList;
 
@@ -25,6 +27,19 @@ public class MemoListAdapter extends RecyclerView.Adapter<MemoListAdapter.ViewHo
 
     public void setList(ArrayList<Memo> list) {
         mList = list;
+
+        Collections.sort(mList, new Comparator<Memo>() {
+            @Override
+            public int compare(Memo m1, Memo m2) {
+                if (m1.getUpdateAt().getMillis() > m2.getUpdateAt().getMillis()) {
+                    return -1;
+                } else if (m1.getUpdateAt().getMillis() < m2.getUpdateAt().getMillis()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
+
         notifyDataSetChanged();
     }
 
@@ -66,10 +81,12 @@ public class MemoListAdapter extends RecyclerView.Adapter<MemoListAdapter.ViewHo
     }
 
     private OnItemClickListener mOnItemClickListener;
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
     }
-    public interface OnItemClickListener{
+
+    public interface OnItemClickListener {
         void onClickItem(Memo memo);
     }
 

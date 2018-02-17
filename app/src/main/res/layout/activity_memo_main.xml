@@ -68,7 +68,7 @@
         android:layout_gravity="start">
 
         <include
-            layout="@layout/drawer_header"/>
+            layout="@layout/drawer_main"/>
 
     </LinearLayout>
 
