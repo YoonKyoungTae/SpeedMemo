@@ -29,7 +29,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
      * Navigator Menu
      */
     private DrawerLayout drawer_layout;
-    private TextView tv_menu_memo_type;
+    private TextView tv_menu_setting;
 
     private MemoListAdapter mMemoListAdapter;
     private DBProvider mDBProvider;
@@ -51,12 +51,12 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
         rv_memo_list.setLayoutManager(new LinearLayoutManager(this));
 
         drawer_layout = findViewById(R.id.drawer_layout);
-        tv_menu_memo_type = findViewById(R.id.tv_menu_memo_type);
+        tv_menu_setting = findViewById(R.id.tv_menu_setting);
 
         iv_menu_btn.setOnClickListener(this);
         iv_add_btn.setOnClickListener(this);
 
-        tv_menu_memo_type.setOnClickListener(this);
+        tv_menu_setting.setOnClickListener(this);
     }
 
     private void initData() {
@@ -104,8 +104,9 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, WriteMemoActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
-            case R.id.tv_menu_memo_type:
-                startActivity(new Intent(this, SelectFunctionActivity.class));
+            case R.id.tv_menu_setting:
+//                startActivity(new Intent(this, SelectFunctionActivity.class));
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
         }
     }

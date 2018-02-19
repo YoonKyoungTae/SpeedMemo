@@ -4,6 +4,7 @@
     android:layout_width="280dp"
     android:layout_height="match_parent"
     android:background="@color/c_ffffff"
+    android:clickable="true"
     android:elevation="16dp"
     android:padding="16dp">
 
@@ -24,13 +25,57 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_menu_memo_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
             android:padding="8dp"
-            android:text="메모방식설정"
+            android:text="공지사항"
+            android:textColor="@color/c_212121"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:padding="8dp"
+            android:text="의견제공"
+            android:textColor="@color/c_212121"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:padding="8dp"
+            android:text="리뷰"
+            android:textColor="@color/c_212121"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:padding="8dp"
+            android:text="공유하기"
+            android:textColor="@color/c_212121"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_menu_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:padding="8dp"
+            android:text="설정"
             android:textColor="@color/c_212121"
             android:textSize="18sp"
             android:textStyle="bold"/>

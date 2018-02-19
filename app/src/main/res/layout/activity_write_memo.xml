@@ -10,7 +10,7 @@
     android:focusableInTouchMode="true"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context="kr.co.diordna.speedmemo.MemoMainActivity">
+    tools:context="kr.co.diordna.speedmemo.WriteMemoActivity">
 
     <RelativeLayout
         android:id="@+id/rl_top"
