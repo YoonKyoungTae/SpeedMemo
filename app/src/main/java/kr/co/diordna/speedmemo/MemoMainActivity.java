@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import kr.co.diordna.speedmemo.adapter.MemoListAdapter;
 import kr.co.diordna.speedmemo.database.DBProvider;
 import kr.co.diordna.speedmemo.model.Memo;
+import kr.co.diordna.speedmemo.utils.Utils;
 
 public class MemoMainActivity extends AppCompatActivity implements View.OnClickListener, MemoListAdapter.OnItemClickListener{
 
@@ -24,12 +25,7 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
     private ImageView iv_add_btn;
     private TextView tv_empty_msg;
     private RecyclerView rv_memo_list;
-
-    /**
-     * Navigator Menu
-     */
     private DrawerLayout drawer_layout;
-    private TextView tv_menu_setting;
 
     private MemoListAdapter mMemoListAdapter;
     private DBProvider mDBProvider;
@@ -51,12 +47,15 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
         rv_memo_list.setLayoutManager(new LinearLayoutManager(this));
 
         drawer_layout = findViewById(R.id.drawer_layout);
-        tv_menu_setting = findViewById(R.id.tv_menu_setting);
+
 
         iv_menu_btn.setOnClickListener(this);
         iv_add_btn.setOnClickListener(this);
 
-        tv_menu_setting.setOnClickListener(this);
+        findViewById(R.id.tv_menu_mail_to).setOnClickListener(this);
+        findViewById(R.id.tv_menu_go_review).setOnClickListener(this);
+        findViewById(R.id.tv_menu_share_to).setOnClickListener(this);
+        findViewById(R.id.tv_menu_setting).setOnClickListener(this);
     }
 
     private void initData() {
@@ -104,9 +103,24 @@ public class MemoMainActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, WriteMemoActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
+
+            // -- Navi Menus -- //
+
+            case R.id.tv_menu_mail_to:
+                Utils.sendMailToDeveloper(this);
+                break;
+
+            case R.id.tv_menu_go_review:
+                Utils.goToReview(this);
+                break;
+
+            case R.id.tv_menu_share_to:
+                Utils.shareToApp(this);
+                break;
+
             case R.id.tv_menu_setting:
-//                startActivity(new Intent(this, SelectFunctionActivity.class));
                 startActivity(new Intent(this, SettingActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
     }

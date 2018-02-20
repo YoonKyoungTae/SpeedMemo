@@ -23,8 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="2016-01-01"
-            android:textColor="@color/c_212121"/>
+            android:textColor="@color/c_212121"
+            tools:text="2016-01-01"/>
 
         <ImageView
             android:id="@+id/iv_back_btn"
@@ -83,7 +83,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:gravity="top"
-        android:hint="메모를 입력해주세요."
+        android:hint="@string/hint_write_memo"
         android:inputType="textMultiLine"
         android:textColor="@color/c_212121"
         android:textSize="15sp"/>

@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/c_ffffff"
     android:clickable="true"
-    android:elevation="16dp"
-    android:padding="16dp">
+    android:elevation="16dp">
 
     <TextView
         android:id="@+id/tv_copy"
@@ -14,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
-        android:text="Copyright 2018.\nDiordna all rights reserved."
+        android:padding="16dp"
+        android:text="@string/copyright"
         android:textColor="@color/c_bdbdbd"
         android:textSize="12sp"/>
 
@@ -24,45 +24,65 @@
         android:layout_above="@id/tv_copy"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:clickable="true"
-            android:padding="8dp"
-            android:text="공지사항"
-            android:textColor="@color/c_212121"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/mini_logo"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/c_929292"/>
+
+        <!--
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:clickable="true"
+                    android:padding="16dp"
+                    android:text="공지사항"
+                    android:textColor="@color/c_212121"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+        -->
 
         <TextView
+            android:id="@+id/tv_menu_mail_to"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
-            android:padding="8dp"
+            android:padding="16dp"
             android:text="의견제공"
             android:textColor="@color/c_212121"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/tv_menu_go_review"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
-            android:padding="8dp"
+            android:padding="16dp"
             android:text="리뷰"
             android:textColor="@color/c_212121"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/tv_menu_share_to"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
-            android:padding="8dp"
+            android:padding="16dp"
             android:text="공유하기"
             android:textColor="@color/c_212121"
             android:textSize="18sp"
@@ -74,7 +94,7 @@
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
-            android:padding="8dp"
+            android:padding="16dp"
             android:text="설정"
             android:textColor="@color/c_212121"
             android:textSize="18sp"

@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="설정"
+            android:text="@string/title_setting"
             android:textColor="@color/c_212121"
             android:textSize="15sp"/>
 
@@ -49,6 +49,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl_select_memo_type"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="?selectableItemBackground"
@@ -58,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="메모방식설정"
+                    android:text="@string/setting_select_memo_type"
                     android:textColor="@color/c_212121"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
@@ -72,6 +73,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_delete_all_memo"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="?selectableItemBackground"
@@ -81,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="데이터 초기화"
+                    android:text="@string/setting_remove_all"
                     android:textColor="@color/c_212121"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
@@ -94,8 +96,8 @@
 
             </RelativeLayout>
 
-            <!-- TODO 추후 최신 버전정보 제공 -->
             <RelativeLayout
+                android:id="@+id/rl_version_info"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="?selectableItemBackground"
@@ -105,10 +107,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="버전 정보"
+                    android:text="@string/setting_version_info"
                     android:textColor="@color/c_212121"
                     android:textSize="15sp"
                     android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_version_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    tools:text="1.0"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/c_bdbdbd"
+                    android:textSize="13sp"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -118,6 +130,7 @@
 
             </RelativeLayout>
 
+            <!-- 최신버전 정보 제공 -->
             <!-- 테마 -->
             <!-- 메모 배열 방식 -->
 

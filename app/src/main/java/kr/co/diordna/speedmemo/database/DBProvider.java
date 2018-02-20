@@ -80,6 +80,12 @@ public class DBProvider extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(MEMO_TABLE, null, null);
+        db.close();
+    }
+
     public ArrayList<Memo> selectAllMemo() {
         ArrayList<Memo> memos = new ArrayList<>();
 

@@ -1,9 +1,16 @@
 <resources>
-    <string name="app_name">SpeedMemo</string>
-
+    <string name="app_name">Select.</string>
     <string name="confirm">확인</string>
     <string name="delete">삭제</string>
     <string name="cancel">취소</string>
+    <string name="share">공유하기</string>
+    <string name="copyright">Copyright 2018.\nDiordna all rights reserved.</string>
+
+    <string name="title_setting">설정</string>
+    <string name="mail_title">[Select.] 문의사항입니다.</string>
+    <string name="share_msg">갑자기 생각난 아이디어!\nSelect. 에 빠르게 기록하세요.\n다운로드 링크 : https://goo.gl/xVb8yJ</string>
+
+    <string name="layout_empty_list_msg">저장된 메모가 없습니다.\n우측 상단의 \'+\' 버튼을 눌러\n새로운 메모를 추가해보세요.</string>
 
     <string name="select_function_title">메모방식을 선택해주세요.</string>
     <string name="select_function_tip">메모방식은 앱 환경설정에서 언제든 변경 가능합니다.</string>
@@ -12,10 +19,21 @@
     <string name="select_read_title">읽기 먼저 할래요!</string>
     <string name="select_read_description">앱 실행시, 작성된 메모 리스트 화면이 먼저 노출됩니다.\n메모 쓰기보다 읽기를 자주하는 분들께 추천합니다.</string>
 
+    <string name="setting_select_memo_type">메모방식 설정</string>
+    <string name="setting_remove_all">데이터 초기화</string>
+    <string name="setting_version_info">버전 정보</string>
 
     <string name="dialog_memo_delete_msg">메모를 삭제하시겠습니까?</string>
     <string name="dialog_memo_back_btn_msg">작성중인 메모는 저장되지 않습니다.</string>
+    <string name="dialog_memo_all_remove_title">주의</string>
+    <string name="dialog_memo_all_remove_msg">정말 모든 메모를 삭제하시겠습니까?\n삭제된 메모는 되돌릴 수 없습니다.</string>
+
+    <string name="hint_write_memo">메모를 입력해주세요.</string>
 
     <string name="toast_require_fill_contents">메모를 작성해주세요.</string>
+    <string name="toast_memo_all_removed">메모가 초기화 되었습니다.</string>
+    <string name="toast_memo_removed">메모가 삭제 되었습니다.</string>
+    <string name="toast_select_function_saved_write">쓰기 우선으로 저장되었습니다.</string>
+    <string name="toast_select_function_saved_read">읽기 우선으로 저장되었습니다.</string>
 
 </resources>

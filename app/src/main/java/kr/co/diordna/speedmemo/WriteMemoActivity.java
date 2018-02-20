@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -148,7 +147,7 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mDBProvider.deleteMemo(mMemo.getIndex());
-                Toast.makeText(WriteMemoActivity.this, "메모가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WriteMemoActivity.this, getString(R.string.toast_memo_removed), Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -166,7 +165,6 @@ public class WriteMemoActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void finish() {
         if (mIsFirstActivity) {
-            Log.d("TEST", "시작으로 들어온 화면");
             startActivity(new Intent(this, MemoMainActivity.class));
         }
 

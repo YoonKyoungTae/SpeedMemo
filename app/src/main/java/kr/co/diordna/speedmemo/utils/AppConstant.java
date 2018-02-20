@@ -11,4 +11,8 @@ public class AppConstant {
     // PREF KEYS
     public static String IS_FIRST = "IS_FIRST";
     public static String APP_MODE = "APP_MODE"; // 앱의 모드를 결정합니다 (true = 쓰기먼저)
+
+    // Util
+    public static String DEVELOPER_MAIL = "yoon91.dev@gmail.com";
+
 }

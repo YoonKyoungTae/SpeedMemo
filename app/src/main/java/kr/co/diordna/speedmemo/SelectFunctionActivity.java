@@ -40,7 +40,7 @@ public class SelectFunctionActivity extends AppCompatActivity implements View.On
                     i.putExtra(WriteMemoActivity.IS_FIRST_ACTIVITY_KEY, true);
                     startActivity(i);
                 } else {
-                    Toast.makeText(this, "쓰기 우선으로 저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_select_function_saved_write), Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
@@ -51,7 +51,7 @@ public class SelectFunctionActivity extends AppCompatActivity implements View.On
                 if (mIsFirstSelect) {
                     startActivity(new Intent(this, MemoMainActivity.class));
                 } else {
-                    Toast.makeText(this, "읽기 우선으로 저장되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_select_function_saved_read), Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
@@ -60,5 +60,11 @@ public class SelectFunctionActivity extends AppCompatActivity implements View.On
 
         MyPref.getInstance().putBoolean(AppConstant.IS_FIRST, false);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

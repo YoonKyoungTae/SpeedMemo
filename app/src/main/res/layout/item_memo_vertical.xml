@@ -30,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="8dp"
-            android:text="YYYY-MM-DD HH:MM"
             android:textColor="@color/c_bdbdbd"
-            android:textSize="13sp"/>
+            android:textSize="13sp"
+            tools:text="YYYY-MM-DD HH:MM"/>
 
     </LinearLayout>
 

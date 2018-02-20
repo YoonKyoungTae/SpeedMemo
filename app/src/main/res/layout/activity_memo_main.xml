@@ -57,7 +57,7 @@
             android:layout_below="@id/rl_top"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="저장된 메모가 없습니다.\n우측 상단의 '+' 버튼을 눌러\n새로운 메모를 추가해보세요."
+            android:text="@string/layout_empty_list_msg"
             android:textColor="@color/c_929292"/>
 
     </RelativeLayout>
